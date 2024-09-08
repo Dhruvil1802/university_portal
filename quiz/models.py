@@ -29,7 +29,7 @@ class Quiz(Audit):
 
 class Questions(Audit):
     class Meta:
-        db_table = 'uq_Questions'
+        db_table = 'up_Questions'
     
     question_id = models.BigAutoField(primary_key=True)
     question = models.CharField(max_length=255,null=True)
@@ -38,5 +38,5 @@ class Questions(Audit):
     answer = models.CharField(max_length=255,null=True)
     options = models.CharField(max_length=255,null=True)
     marks = models.IntegerField(null=True)
-    
+
 

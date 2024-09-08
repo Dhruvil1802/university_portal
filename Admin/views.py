@@ -80,9 +80,10 @@ class Registration(APIView):
                 return CustomBadRequest(message=SERIALIZER_IS_NOT_VALID)
 
         except Administrator.DoesNotExist:
-            raise NotFound(detail="user not found")
+            raise GenericException(detail="user not found")
         
         except Exception as e:
+            traceback.print_exc()
             return GenericException()
 
 

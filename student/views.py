@@ -28,6 +28,7 @@ from student.serializers import (
     QuizTestSerializer, QuizTotalMarksSerializer, RegistrationSerializer,
     SubjectSelectionSerializer, SubmitedAssignmentSerializer, ViewGradeSerializer
 )
+from rest_framework.parsers import MultiPartParser, FormParser
 
 
 class Registration(APIView):
@@ -167,7 +168,7 @@ class ManageSubjects(APIView):
 
 class SubmitAssignment(APIView):
     authentication_classes = [StudentJWTAuthentication]
-
+    parser_classes = (MultiPartParser, FormParser)
     @staticmethod
     def post(request):
         try:

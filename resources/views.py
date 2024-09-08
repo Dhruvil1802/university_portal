@@ -12,11 +12,12 @@ from rest_framework.views import APIView
 from security.professor_authorization import ProfessorJWTAuthentication
 from student.models import SubmitedAssignment
 from student.serializers import SubmitedAssignmentSerializer
-
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 class PostAssignment(APIView):
     authentication_classes = [ProfessorJWTAuthentication]
 
+    parser_classes = (MultiPartParser, FormParser, JSONParser)
     @staticmethod
     def post(request):
         try:
@@ -32,6 +33,7 @@ class PostAssignment(APIView):
         except Exception:
             return GenericException()
 
+    parser_classes = (MultiPartParser, FormParser, JSONParser)
     @staticmethod
     def patch(request):
         try:
@@ -50,6 +52,7 @@ class PostAssignment(APIView):
         except Exception:
             return GenericException()
 
+    parser_classes = (MultiPartParser, FormParser, JSONParser)
     @staticmethod
     def delete(request):
         try:
@@ -80,6 +83,7 @@ class PostAssignment(APIView):
 class PostNotes(APIView):
     authentication_classes = [ProfessorJWTAuthentication]
 
+    parser_classes = (MultiPartParser, FormParser, JSONParser)
     @staticmethod
     def post(request):
         try:
@@ -96,6 +100,7 @@ class PostNotes(APIView):
             
             return GenericException()
 
+    parser_classes = (MultiPartParser, FormParser, JSONParser)
     @staticmethod
     def patch(request):
         try:
@@ -114,6 +119,7 @@ class PostNotes(APIView):
            
             return GenericException()
 
+    parser_classes = (MultiPartParser, FormParser, JSONParser)
     @staticmethod
     def delete(request):
         try:
